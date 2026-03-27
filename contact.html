@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with OpenClaw Tutorials — corrections, suggestions, guest posts, partnerships, or just to say hello.">
+  <title>Contact — OpenClaw Tutorials</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo"><div class="logo-icon">🦞</div>OpenClaw Tutorials</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="index.html#newsletter" class="cta-btn">Subscribe</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="article-header" style="border-bottom: none; padding-bottom: 20px;">
+    <div class="container-narrow">
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a> / <span>Contact</span>
+      </nav>
+      <h1>Get in Touch</h1>
+      <p style="color: var(--text-secondary); margin-top: 10px;">
+        Corrections, topic suggestions, guest post pitches, partnerships, or just want to say hi — we read everything.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form + Info -->
+  <section class="section-sm" style="padding-top: 0;">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Contact Info -->
+        <div>
+          <div class="contact-info-card">
+            <h3>Ways to Reach Us</h3>
+
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div>
+                <h4>Email</h4>
+                <p>hello@openclawtutorials.com</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">🐦</div>
+              <div>
+                <h4>Twitter / X</h4>
+                <p>@OpenClawTutorials</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">💬</div>
+              <div>
+                <h4>Discord Community</h4>
+                <p>Join our community server for help, tips, and discussions about OpenClaw and AI agents.</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📝</div>
+              <div>
+                <h4>Guest Posts</h4>
+                <p>We accept guest tutorials on OpenClaw, AI automation, and related tools. Pitch us with your idea.</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border);">
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0;">
+                <strong style="color: var(--text-secondary);">Response time:</strong> We aim to reply within 48 hours on business days. For urgent bugs in our tutorials, use the Discord community.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-card">
+          <h3>Send a Message</h3>
+          <form id="contactForm" onsubmit="handleContact(event)">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Ada Lovelace" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="ada@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select a topic...</option>
+                <option value="correction">Correction / Bug in a Guide</option>
+                <option value="suggestion">Article Suggestion</option>
+                <option value="guest-post">Guest Post Pitch</option>
+                <option value="partnership">Partnership</option>
+                <option value="feedback">General Feedback</option>
+                <option value="hello">Just Saying Hi</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="What's on your mind? Be as specific as you can — especially for corrections or suggestions." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;" id="submitBtn">
+              Send Message →
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Preview -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="section-header">
+        <h2>Common Questions</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Is OpenClaw Tutorials affiliated with OpenClaw?</h3>
+          <p>No. We're an independent publication run by a community of OpenClaw users. We don't receive payment from the OpenClaw project and our opinions are our own.</p>
+        </div>
+        <div class="about-card">
+          <h3>Can I republish your articles?</h3>
+          <p>Our content is copyright. You're welcome to share links to our articles freely. Republishing or translations require written permission — reach out via the form above.</p>
+        </div>
+        <div class="about-card">
+          <h3>How do you pick which skills to recommend?</h3>
+          <p>Every skill we recommend has been installed and tested on a fresh OpenClaw instance. We rate on reliability, maintenance, and real-world utility — not popularity or affiliate arrangements.</p>
+        </div>
+        <div class="about-card">
+          <h3>I found an error in a tutorial — what do I do?</h3>
+          <p>Use the contact form above, select "Correction / Bug in a Guide," and include the article title, the specific step that's wrong, and what you believe the correct information is. We fix errors fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><div class="logo-icon">🦞</div>OpenClaw Tutorials</div>
+          <p>Independent tutorials for the OpenClaw AI agent platform.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Articles</h4>
+          <ul>
+            <li><a href="articles.html">All Tutorials</a></li>
+            <li><a href="articles/openclaw-absolute-beginners-guide.html">Getting Started</a></li>
+            <li><a href="articles/openclaw-best-skills-guide.html">Best Skills</a></li>
+            <li><a href="articles/openclaw-build-first-skill.html">Build Skills</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Topics</h4>
+          <ul>
+            <li><a href="articles/openclaw-review-2026.html">Reviews</a></li>
+            <li><a href="articles/openclaw-pricing-2026.html">Pricing</a></li>
+            <li><a href="articles/openclaw-discord-integration.html">Discord</a></li>
+            <li><a href="articles/openclaw-email-automation.html">Email</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Site</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="sitemap.xml">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 OpenClaw Tutorials. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobileToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+    function handleContact(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = '✅ Message Sent!';
+      btn.disabled = true;
+      setTimeout(() => {
+        e.target.reset();
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+      }, 4000);
+    }
+  </script>
+</body>
+</html>

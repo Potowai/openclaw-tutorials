@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Install OpenClaw on Ubuntu in 10 minutes with this step-by-step guide. Covers Ubuntu 22.04 and 24.04, prerequisites, configuration, and your first agent conversation.">
+  <title>How to Install OpenClaw on Ubuntu in 10 Minutes</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo"><div class="logo-icon">🦞</div>OpenClaw Tutorials</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../articles.html" class="active">Articles</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../index.html#newsletter" class="cta-btn">Subscribe</a></li>
+      </ul>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <article>
+    <header class="article-header">
+      <div class="container-narrow">
+        <nav class="breadcrumb">
+          <a href="../index.html">Home</a> / <a href="../articles.html">Articles</a> / <span>Install on Ubuntu</span>
+        </nav>
+        <span class="card-tag">Setup</span>
+        <h1>How to Install OpenClaw on Ubuntu in 10 Minutes</h1>
+        <div class="article-meta">
+          <span>📅 March 2026</span>
+          <span>⏱ 10 min read</span>
+          <span>✍️ OpenClaw Tutorials Team</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="container-narrow">
+      <div class="article-featured-image">
+        <img src="https://picsum.photos/seed/openclaw-ubuntu/860/420" alt="Install OpenClaw on Ubuntu" loading="lazy">
+      </div>
+
+      <div class="article-body">
+
+        <p>
+          This guide gets you from a fresh Ubuntu server or desktop to a fully running OpenClaw agent in 10 minutes. No Linux expertise required — just a terminal and the willingness to follow steps. We'll cover Ubuntu 22.04 LTS and 24.04 LTS, both on physical hardware and VPS.
+        </p>
+
+        <h2>Prerequisites</h2>
+        <p>Before you start, make sure you have:</p>
+        <ul>
+          <li><strong>Ubuntu 22.04 or 24.04</strong> (desktop or server edition)</li>
+          <li><strong>2 GB RAM minimum</strong> (4 GB recommended for comfortable use)</li>
+          <li><strong>10 GB free disk space</strong></li>
+          <li><strong>sudo access</strong> on the machine</li>
+          <li><strong>An API key</strong> from OpenAI, Anthropic, or a compatible provider (or Ollama for fully local)</li>
+        </ul>
+
+        <h2>Step 1 — Update Your System</h2>
+        <p>
+          First things first — make sure your system packages are up to date. Open your terminal and run:
+        </p>
+        <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+        <p>
+          This takes 1-3 minutes on a fresh install. Don't skip it — outdated dependencies are a common source of installation errors.
+        </p>
+
+        <h2>Step 2 — Install Required Dependencies</h2>
+        <p>
+          OpenClaw needs Python 3.10+ and a few system packages. Install them with:
+        </p>
+        <pre><code>sudo apt install -y python3 python3-pip python3-venv git curl wget</code></pre>
+        <p>
+          Python comes pre-installed on Ubuntu desktop, but the server edition sometimes doesn't include it. The above command covers all cases.
+        </p>
+
+        <h2>Step 3 — Clone the OpenClaw Repository</h2>
+        <p>
+          Head to the official OpenClaw GitHub repository and clone it to your machine. We'll use the standard location:
+        </p>
+        <pre><code>git clone https://github.com/openclaw/openclaw.git ~/openclaw</code></pre>
+        <p>
+          If you don't have git installed, run <code>sudo apt install git</code> first. Once cloned, navigate into the directory:
+        </p>
+        <pre><code>cd ~/openclaw</code></pre>
+
+        <h2>Step 4 — Set Up a Python Virtual Environment</h2>
+        <p>
+          It's best practice to isolate OpenClaw's Python environment from your system Python. Create and activate a virtual environment:
+        </p>
+        <pre><code>python3 -m venv venv
+source venv/bin/activate</code></pre>
+        <p>
+          You'll know the venv is active when you see <code>(venv)</code> at the start of your terminal prompt.
+        </p>
+
+        <h2>Step 5 — Install OpenClaw</h2>
+        <p>
+          OpenClaw provides an official installer script that handles most of the setup. Run it:
+        </p>
+        <pre><code>pip install openclaw-agent</code></pre>
+        <p>
+          Or, if you cloned the repo directly:
+        </p>
+        <pre><code>pip install -e .</code></pre>
+        <p>
+          The install process installs all required Python dependencies. This takes 2-4 minutes depending on your internet speed.
+        </p>
+
+        <h2>Step 6 — Configure Your API Keys</h2>
+        <p>
+          OpenClaw needs at least one LLM provider to function. Create your configuration file:
+        </p>
+        <pre><code>openclaw init</code></pre>
+        <p>
+          This interactive command asks for your preferred provider, API key, and default model. The configuration is saved to <code>~/.openclaw/config.yaml</code>. You can edit this file directly at any time.
+        </p>
+        <p>
+          For <strong>local models only</strong> (no API key needed), install Ollama first:
+        </p>
+        <pre><code>curl -fsSL https://ollama.com/install.sh | sh
+ollama pull llama3.2</code></pre>
+        <p>
+          Then select "Ollama" as your provider during <code>openclaw init</code>.
+        </p>
+
+        <h2>Step 7 — Start OpenClaw for the First Time</h2>
+        <p>
+          With configuration done, start the agent:
+        </p>
+        <pre><code>openclaw run</code></pre>
+        <p>
+          On first run, OpenClaw will download any required model files (if using a local provider), initialize its memory system, and present you with a prompt. Type a message and press Enter — you've just started your first conversation.
+        </p>
+        <blockquote>
+          "The first question most beginners ask: 'What should I say to it?' Try: 'What can you help me with today, and what do you need access to in order to help me effectively?'" — our recommended first message.
+        </blockquote>
+
+        <h2>Step 8 — Run OpenClaw as a Background Service (Optional but Recommended)</h2>
+        <p>
+          Running <code>openclaw run</code> in your terminal works, but the agent stops when you close the terminal. For a persistent agent that runs all the time, set it up as a systemd service:
+        </p>
+        <pre><code>sudo nano /etc/systemd/system/openclaw.service</code></pre>
+        <p>
+          Paste the following (adjust paths as needed):
+        </p>
+        <pre><code>[Unit]
+Description=OpenClaw AI Agent
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/home/YOUR_USERNAME/openclaw
+ExecStart=/home/YOUR_USERNAME/openclaw/venv/bin/openclaw run
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+        <p>
+          Enable and start the service:
+        </p>
+        <pre><code>sudo systemctl daemon-reload
+sudo systemctl enable openclaw
+sudo systemctl start openclaw</code></pre>
+        <p>
+          Check status with: <code>sudo systemctl status openclaw</code>
+        </p>
+
+        <h2>Step 9 — Connect a Messaging Platform (Highly Recommended)</h2>
+        <p>
+          The real power of OpenClaw comes alive when you can message it from your phone. The Telegram integration takes about 5 minutes:
+        </p>
+        <ol>
+          <li>Create a bot via <strong>@BotFather</strong> on Telegram — save the token it gives you.</li>
+          <li>Add the Telegram skill to your OpenClaw instance: <code>openclaw skill install telegram</code></li>
+          <li>Set your bot token: <code>openclaw config set skills.telegram.bot_token YOUR_TOKEN</code></li>
+          <li>Restart OpenClaw: <code>sudo systemctl restart openclaw</code></li>
+          <li>Open Telegram, find your bot, and send it any message — you should get a response.</li>
+        </ol>
+
+        <h2>Troubleshooting Common Issues</h2>
+        <p>
+          <strong>Permission denied on first run:</strong> Make sure your Python venv is activated. Run <code>source ~/openclaw/venv/bin/activate</code> before any <code>pip install</code> or <code>openclaw</code> commands.
+        </p>
+        <p>
+          <strong>API key rejected:</strong> Double-check for extra spaces in your config file. API keys are exact — a trailing space will break authentication.
+        </p>
+        <p>
+          <strong>Port already in use:</strong> If you're on a VPS with other services, <code>openclaw run</code> may fail on the default port. Set a custom port: <code>openclaw run --port 8080</code>
+        </p>
+
+        <div class="cta-box">
+          <h3>OpenClaw Installed — What's Next?</h3>
+          <p>Now that you have a running agent, check out our roundup of the best skills to install first for maximum value.</p>
+          <a href="openclaw-best-skills-guide.html" class="btn-primary">Best Skills to Install First →</a>
+        </div>
+
+        <div class="tags">
+          <span class="tag">Installation</span>
+          <span class="tag">Ubuntu</span>
+          <span class="tag">Setup</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Beginner</span>
+        </div>
+
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 OpenClaw Tutorials. All rights reserved.</span>
+        <div class="footer-bottom-links"><a href="../about.html">About</a><a href="../contact.html">Contact</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobileToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+  </script>
+</body>
+</html>
